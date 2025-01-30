@@ -9,20 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class SeriesApplication implements CommandLineRunner {
-
-	@Autowired
-	private SerieRepository repositorio;
+public class SeriesApplication  {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SeriesApplication.class, args);
-
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		Principal principal = new Principal(repositorio);
-		principal.exibeMenu();
 
 	}
 }
