@@ -12,8 +12,7 @@ import java.util.OptionalDouble;
 public class Serie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
-    @Column(unique = true)
+    private Long id;
     private String titulo;
     private Integer totalTemporadas;
     private Double avaliacao;

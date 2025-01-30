@@ -1,14 +1,25 @@
 package br.com.enzo.series.controller;
 
+import br.com.enzo.series.dto.SerieDTO;
+import br.com.enzo.series.repository.SerieRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class SerieController {
 
+    @Autowired
+    private SerieRepository repositorio;
+
     @GetMapping("/series")
-    public String obterSeries() {
-        return "Aqui vão ser listadas as séries";
+    public List<SerieDTO> obterSeries() {
+        return repositorio.findAll().stream()
+                .map(s -> new SerieDTO(s.getId(), s.getTitulo(), s.getTitulo(), s.getTotalTemporadas(), s.getGenero(), s.getAtores(), s.getPoster(), s.getSinopse()))
+                .collect(Collectors.toList());
     }
 
 }
